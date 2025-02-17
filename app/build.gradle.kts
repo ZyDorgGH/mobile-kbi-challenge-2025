@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -79,6 +80,12 @@ dependencies {
     implementation(libs.navigation.compose)
 
     implementation(libs.lifecycle.viewmodel.compose)
+
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
+
+    implementation("com.github.javaherisaber.MockFit:runtime:2.0.0")
+    kapt("com.github.javaherisaber.MockFit:compiler:2.0.0")
+
 }
 
 kapt {

@@ -45,6 +45,6 @@ lifecycle-viewmodel-compose = { group = "androidx.lifecycle",name = "lifecycle-v
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt-version" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 
