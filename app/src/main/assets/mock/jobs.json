@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Lead Engineer",
+    "published": "2025-02-13T00:00:00",
+    "company": "Tech Star Company",
+    "companyLogoUrl": "https://cdn.prod.website-files.com/6393835bb435c428e5b6a54a/6393841f01ab88522a2396b9_Techstar%20Logo%20(1)%20(1).png",
+    "location": "Michigan, United States",
+    "type": "contract",
+    "excerpt": "Lead Engineer position for candidates residing in Michigan, USA.",
+    "description": [
+      "Lead engineering projects and teams.",
+      "Collaborate with cross-functional departments.",
+      "Ensure timely delivery of software solutions."
+    ],
+    "salary": 100000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "title": "Full-Stack Engineer",
+    "published": "2025-02-11T00:00:00",
+    "company": "Tolt",
+    "companyLogoUrl": "https://cdn.prod.website-files.com/6329ec26d5d4133a1b0ed116/639ef54038e93fa3d9f50c28_tolt256.png",
+    "location": "Remote",
+    "type": "full_time",
+    "excerpt": "Opportunity to work closely with the CTO in a dynamic environment.",
+    "description": [
+      "Develop and maintain web applications.",
+      "Implement new features based on user feedback.",
+      "Optimize application performance."
+    ],
+    "salary": 50000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "title": "Senior Test Automation Engineer",
+    "published": "2025-02-06T00:00:00",
+    "company": "MailerLite",
+    "companyLogoUrl": "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_6f674b882a9f26544d804c2c8badd73f/mailerlite.png",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Senior position focusing on test automation within the USA.",
+    "description": [
+      "Design and implement automated test suites.",
+      "Collaborate with development teams to ensure quality.",
+      "Analyze test results and report defects."
+    ],
+    "salary": 50000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "title": "Tech Lead",
+    "published": "2025-01-31T00:00:00",
+    "company": "Zappyrent",
+    "companyLogoUrl": "https://media.licdn.com/dms/image/v2/C4D0BAQFdF7X2PHxRow/company-logo_200_200/company-logo_200_200/0/1672754151586/zappyrent_logo?e=2147483647&v=beta&t=CO2sjtEc8IyOwXb5YuRPgZYwATG1NB97rzzQbH-fmj0",
+    "location": "Milan, Italy",
+    "type": "full_time",
+    "excerpt": "Technical Lead role based in Milan, overseeing development projects.",
+    "description": [
+      "Lead a team of developers.",
+      "Architect and design system solutions.",
+      "Ensure code quality and best practices."
+    ],
+    "salary": 75500,
+    "salaryCurrency": "EUR"
+  },
+  {
+    "title": "Full Stack Ruby Engineer",
+    "published": "2025-01-31T00:00:00",
+    "company": "OpenPlay",
+    "companyLogoUrl": "https://media.licdn.com/dms/image/v2/D560BAQEVUoINH9YnGg/company-logo_200_200/company-logo_200_200/0/1683999922488/openplay_logo?e=2147483647&v=beta&t=tNxHKW26c0k7g7IXYMWphzNNKtrIjqhqYycbWQtIQRs",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Full Stack Engineer specializing in Ruby, located in Los Angeles.",
+    "description": [
+      "Develop and maintain Ruby on Rails applications.",
+      "Work on both front-end and back-end components.",
+      "Collaborate with product teams to define features."
+    ],
+    "salary": 90000,
+    "salaryCurrency": "USD"
+  }
+]
