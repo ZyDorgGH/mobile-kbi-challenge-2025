@@ -2,12 +2,11 @@ package id.kitabantu.model
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import java.time.LocalDateTime
+import kotlinx.datetime.LocalDateTime
 import java.util.Currency
 
 @RequiresApi(Build.VERSION_CODES.O)
 object DummyData {
-
 
     val jobs = listOf(
         Job(
