@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.gms)
 }
 
 android {
@@ -85,6 +86,8 @@ dependencies {
 
     implementation("com.github.javaherisaber.MockFit:runtime:2.0.0")
     kapt("com.github.javaherisaber.MockFit:compiler:2.0.0")
+
+    implementation("com.google.firebase:firebase-auth-ktx:21.1.0")
 
 }
 

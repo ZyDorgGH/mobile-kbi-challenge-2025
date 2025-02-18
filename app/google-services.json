@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "947073521616",
+    "project_id": "mobile-kbi-challenge-2025-auth",
+    "storage_bucket": "mobile-kbi-challenge-2025-auth.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947073521616:android:7a83accba3bd6d16e78bd5",
+        "android_client_info": {
+          "package_name": "id.kitabantu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChhO9NOSwp0imN3vUo-exT52rpSvsck34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
