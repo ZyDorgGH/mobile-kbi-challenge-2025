@@ -1,5 +1,6 @@
 package id.kitabantu.model
 
+
 import kotlinx.datetime.LocalDateTime
 import java.util.Currency
 
