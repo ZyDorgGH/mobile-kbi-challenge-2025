@@ -1,6 +1,7 @@
 package id.kitabantu.model
 
-import java.time.LocalDateTime
+
+import kotlinx.datetime.LocalDateTime
 import java.util.Currency
 
 data class Job(
