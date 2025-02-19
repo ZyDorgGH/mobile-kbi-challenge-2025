@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">mobile-kbi-challenge-2025</string>
+    <string name="posted_at">POSTED ON</string>
+    <string name="salary">SALARY</string>
+    <string name="job_type">JOB NATURE</string>
+    <string name="job_location">JOB LOCATION</string>
+    <string name="responsibilities">RESPONSIBILITIES</string>
+    <string name="qualification">Qualification</string>
+    <string name="connection_problem">Connection Problem</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="find_another_job">Find Another Job</string>
 </resources>

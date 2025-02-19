@@ -1,5 +1,6 @@
 package id.kitabantu.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,15 +21,19 @@ class JobsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _jobsQuery: MutableStateFlow<String> = MutableStateFlow("")
+    private val _sort: MutableStateFlow<String> = MutableStateFlow("")
     private val _jobsCategories: MutableStateFlow<Set<JobType>> = MutableStateFlow(emptySet())
 
     val jobsUiState: StateFlow<JobsUiState> =
-        combine(_jobsQuery, _jobsCategories, jobRepository.getJobs()) { query, categories, result ->
+        combine(_jobsQuery, _jobsCategories, _sort, jobRepository.getJobs()) { query, categories, sort,  result ->
+
             when (result) {
                 is Result.Loading -> JobsUiState.Loading
                 is Result.Success -> {
                     val jobs = result.data
-                    JobsUiState.Success(jobs.search(query, categories))
+                    Log.e("query" , query)
+                    Log.e("categories" , categories.toString())
+                    JobsUiState.Success(jobs.search(query, categories, sort))
                 }
 
                 is Result.Error -> JobsUiState.Error(result.message)
@@ -42,17 +47,43 @@ class JobsViewModel @Inject constructor(
 
     fun setSearchQuery(query: String) {
         _jobsQuery.value = query
+
+    }
+    fun setSort(sort: String) {
+        _sort.value = sort
+
     }
 
     fun setCategories(categories: Set<JobType>) {
         _jobsCategories.value = categories
     }
 
-    private fun List<Job>.search(query: String, categories: Set<JobType>) = this.filter { job ->
-        val searchByCategory = if (categories.isNotEmpty()) (job.type in categories) else true
+    private fun List<Job>.search(
+        query: String,
+        categories: Set<JobType>,
+        sort: String
 
-        job.title.contains(query) or searchByCategory
+    ): List<Job> {
+        return this.filter { job ->
+            val searchByCategory = if (categories.isNotEmpty()) (job.type in categories) else true
+
+            job.title.contains(query, ignoreCase = true) and searchByCategory
+
+        }.sortedWith(
+            compareByDescending {
+                when (sort) {
+                    "Salary" ->  it.salary
+                    else ->  it.published
+                }
+            }
+
+        )
+
     }
+
+    private fun List<Job>.sort(sort: String) =
+        if (sort == "Salary") this.sortedBy { it.salary} else this.sortedBy { it.published}
+
 }
 
 sealed interface JobsUiState {
