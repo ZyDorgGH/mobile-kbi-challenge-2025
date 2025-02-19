@@ -3,10 +3,7 @@ package id.kitabantu.model
 import android.os.Build
 import androidx.annotation.RequiresApi
 
-@RequiresApi(Build.VERSION_CODES.O)
 object DummyData {
-
-
 
     val keyword = listOf(
         SearchSuggestion(keyword = "Teknologi"),
