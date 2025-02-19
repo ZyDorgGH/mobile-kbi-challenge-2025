@@ -20,6 +20,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import id.kitabantu.ui.navigation.Screen
+import id.kitabantu.ui.screen.detail.DetailScreen
 import id.kitabantu.ui.screen.home.HomeScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -67,16 +68,23 @@ fun KitaBantuApp(
         ){
             composable(Screen.Home.route) {
                 HomeScreen(
-                    navigateToDetail = {id ->
-                        navController.navigate(Screen.DetailJob.createRoute(id))
+                    navigateToDetail = {title ->
+                        navController.navigate(Screen.DetailJob.createRoute(title))
                     }
                 )
             }
             composable(
                 route = Screen.DetailJob.route,
-                arguments = listOf(navArgument("id") { type = NavType.IntType })
+                arguments = listOf(navArgument("title") { type = NavType.StringType })
             ) {
-                val jobId = it.arguments?.getInt("id") ?: -1
+                val jobTitle = it.arguments?.getString("title") ?: ""
+                DetailScreen(
+                    title = jobTitle,
+                    navigateToHome = { navController.navigate(Screen.Home.route) },
+                    navigateToDetail = {title ->
+                        navController.navigate(Screen.DetailJob.createRoute(title))
+                    }
+                )
 
             }
         }

@@ -76,11 +76,15 @@ dependencies {
     implementation(libs.coil)
 
     implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation)
     kapt(libs.hilt.compiler)
 
     implementation(libs.navigation.compose)
 
     implementation(libs.lifecycle.viewmodel.compose)
+
+    implementation ("androidx.compose.ui:ui-text-google-fonts:1.7.8")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
 
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
 
