@@ -38,4 +38,12 @@ class AuthService {
         }
     }
 
+    fun unauthenticateUser() {
+        try {
+            auth.signOut()
+        } catch (e: Exception) {
+            Log.d("Auth", "unauthenticateUser: ${e.message}")
+        }
+    }
+
 }
