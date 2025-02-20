@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.kitabantu.data.Result
+import id.kitabantu.data.repository.JobBookmarkRepository
 import id.kitabantu.data.repository.JobRepository
 import id.kitabantu.model.Job
 import id.kitabantu.model.JobType
@@ -13,11 +14,13 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class JobsViewModel @Inject constructor(
     jobRepository: JobRepository,
+    private val jobBookmarkRepository: JobBookmarkRepository
 ) : ViewModel() {
 
     private val _jobsQuery: MutableStateFlow<String> = MutableStateFlow("")
@@ -58,6 +61,22 @@ class JobsViewModel @Inject constructor(
         _jobsCategories.value = categories
     }
 
+    fun addBookmark(job: Job){
+        viewModelScope.launch {
+            jobBookmarkRepository.addBookmark(job)
+        }
+    }
+
+    fun removeBookmark(job: Job) {
+        viewModelScope.launch {
+            jobBookmarkRepository.removeBookmark(job)
+        }
+    }
+
+    fun isBookmark(job: Job): Boolean{
+        return jobBookmarkRepository.isBookmarked(job)
+    }
+
     private fun List<Job>.search(
         query: String,
         categories: Set<JobType>,
@@ -76,13 +95,8 @@ class JobsViewModel @Inject constructor(
                     else ->  it.published
                 }
             }
-
         )
-
     }
-
-    private fun List<Job>.sort(sort: String) =
-        if (sort == "Salary") this.sortedBy { it.salary} else this.sortedBy { it.published}
 
 }
 
