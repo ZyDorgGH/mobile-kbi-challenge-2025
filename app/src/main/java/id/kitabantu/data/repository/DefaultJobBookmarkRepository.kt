@@ -29,4 +29,8 @@ class DefaultJobBookmarkRepository : JobBookmarkRepository {
             mutableJobs.toList()
         }
     }
+
+    override fun isBookmarked(job: Job): Boolean {
+        return (bookmarks.value.contains(job))
+    }
 }

@@ -11,4 +11,6 @@ interface JobBookmarkRepository {
     fun addBookmark(job: Job)
 
     fun removeBookmark(job: Job)
+
+    fun isBookmarked(job: Job): Boolean
 }
