@@ -72,7 +72,7 @@ fun KitaBantuApp(
                         title = {
                             Text(
                                 text = stringResource(R.string.bookmark_menu),
-                                style = MaterialTheme.typography.titleMedium,
+                                style = MaterialTheme.typography.titleLarge,
                                 color = Color.Black,
                                 fontWeight = FontWeight.Bold,
                                 maxLines = 1,
@@ -82,6 +82,7 @@ fun KitaBantuApp(
                                     .padding(
                                         start = 8.dp,
                                         bottom = 2.dp,
+                                        top = 4.dp
                                     )
                             )
                         },
@@ -148,11 +149,11 @@ fun KitaBantuApp(
             }
             composable(
                 route = Screen.DetailJob.route,
-                arguments = listOf(navArgument("title") { type = NavType.StringType })
+                arguments = listOf(navArgument("id") { type = NavType.LongType })
             ) {
-                val jobTitle = it.arguments?.getString("title") ?: ""
+                val jobId = it.arguments?.getLong("id") ?: -1L
                 DetailScreen(
-                    title = jobTitle,
+                    id = jobId,
                     navigateToHome = { navController.navigate(Screen.Home.route) },
                     navigateToDetail = {id ->
                         navController.navigate(Screen.DetailJob.createRoute(id))

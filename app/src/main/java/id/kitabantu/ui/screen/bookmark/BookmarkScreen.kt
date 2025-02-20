@@ -48,7 +48,7 @@ import id.kitabantu.ui.theme.blackWithTransparency
 
 @Composable
 fun BookmarkScreen(
-    navigateToDetail: (String) -> Unit,
+    navigateToDetail: (Long) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: BookmarkViewModel = hiltViewModel()
 ){
@@ -100,7 +100,7 @@ fun BookmarkScreen(
 private fun BookmarkList(
     jobs: List<Job>,
     modifier: Modifier = Modifier,
-    navigateToDetail: (String) -> Unit,
+    navigateToDetail: (Long) -> Unit,
 ) {
     LazyColumn(
         modifier = modifier.background(GreyLight),
@@ -119,7 +119,7 @@ private fun BookmarkList(
 @Composable
 private fun BookmarkItem(
     job: Job,
-    navigateToDetail: (String) -> Unit,
+    navigateToDetail: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -128,7 +128,7 @@ private fun BookmarkItem(
             .clip(RoundedCornerShape(14.dp))
             .background(Color.White)
             .clickable {
-                navigateToDetail(job.title)
+                navigateToDetail(job.id)
             }
 
     ) {

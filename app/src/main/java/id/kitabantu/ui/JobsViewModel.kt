@@ -8,6 +8,7 @@ import id.kitabantu.data.Result
 import id.kitabantu.data.repository.JobBookmarkRepository
 import id.kitabantu.data.repository.JobRepository
 import id.kitabantu.model.Job
+import id.kitabantu.model.JobSort
 import id.kitabantu.model.JobType
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -24,7 +25,7 @@ class JobsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _jobsQuery: MutableStateFlow<String> = MutableStateFlow("")
-    private val _sort: MutableStateFlow<String> = MutableStateFlow("")
+    private val _sort: MutableStateFlow<JobSort> = MutableStateFlow(JobSort.NEW_ADDED)
     private val _jobsCategories: MutableStateFlow<Set<JobType>> = MutableStateFlow(emptySet())
 
     val jobsUiState: StateFlow<JobsUiState> =
@@ -52,7 +53,7 @@ class JobsViewModel @Inject constructor(
         _jobsQuery.value = query
 
     }
-    fun setSort(sort: String) {
+    fun setSort(sort: JobSort) {
         _sort.value = sort
 
     }
@@ -80,7 +81,7 @@ class JobsViewModel @Inject constructor(
     private fun List<Job>.search(
         query: String,
         categories: Set<JobType>,
-        sort: String
+        sort: JobSort
 
     ): List<Job> {
         return this.filter { job ->
@@ -91,8 +92,8 @@ class JobsViewModel @Inject constructor(
         }.sortedWith(
             compareByDescending {
                 when (sort) {
-                    "Salary" ->  it.salary
-                    else ->  it.published
+                    JobSort.SALARY ->  it.salary
+                    JobSort.NEW_ADDED ->  it.published
                 }
             }
         )

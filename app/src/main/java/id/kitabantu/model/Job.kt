@@ -5,6 +5,7 @@ import kotlinx.datetime.LocalDateTime
 import java.util.Currency
 
 data class Job(
+    val id: Long,
     val title: String,
     val published: LocalDateTime,
     val company: String,
