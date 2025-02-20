@@ -2,6 +2,7 @@ package id.kitabantu.ui.screen.detail
 
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -99,7 +100,6 @@ fun DetailScreen(
 
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val detailDialog = remember { mutableStateOf(false) }
-    var isBookmarked by remember { mutableStateOf(false) }
     val context = LocalContext.current
 
     viewModel.jobsUiState.collectAsStateWithLifecycle(initialValue = JobsUiState.Loading).value.let { uiState ->
@@ -162,7 +162,6 @@ fun DetailScreen(
                                                     contentDescription = "Back",
                                                     tint = MaterialTheme.colorScheme.primary,
                                                     modifier = modifier
-
                                                 )
                                             }
                                         }
@@ -221,8 +220,6 @@ fun DetailScreen(
                                             }
                                         }
                                     }
-
-
                                 }
 
                             },
@@ -251,14 +248,16 @@ fun DetailScreen(
                                 }
                             },
                             actions = {
+                                var isBookmarked by remember { mutableStateOf(viewModel.isBookmark(job)) }
                                 IconButton(
                                     onClick = {
                                         if (isBookmarked){
-
+                                            viewModel.removeBookmark(job)
                                         } else {
-
+                                            viewModel.addBookmark(job)
                                         }
-                                        isBookmarked = !isBookmarked
+                                        isBookmarked = viewModel.isBookmark(job)
+                                        Log.e("isBookmark", "$isBookmarked")
                                     },
                                     modifier = modifier
                                 ) {
