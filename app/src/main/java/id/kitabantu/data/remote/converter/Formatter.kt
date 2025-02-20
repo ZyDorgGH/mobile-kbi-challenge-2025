@@ -2,6 +2,7 @@ package id.kitabantu.data.remote.converter
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import id.kitabantu.model.JobSort
 import id.kitabantu.model.JobType
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
@@ -33,4 +34,11 @@ fun String.toJobType(): JobType {
         .joinToString("_") { it.uppercase() }
 
     return JobType.entries.firstOrNull { it.name == formattedString } ?: JobType.FULL_TIME
+}
+
+fun String.toJobSort(): JobSort {
+    val formattedString = this.split(" ")
+        .joinToString("_") { it.uppercase() }
+
+    return JobSort.entries.firstOrNull { it.name == formattedString } ?: JobSort.NEW_ADDED
 }

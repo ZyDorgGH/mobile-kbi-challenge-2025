@@ -75,6 +75,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import id.kitabantu.R
 import id.kitabantu.data.remote.converter.toDisplayString
+import id.kitabantu.data.remote.converter.toJobSort
 import id.kitabantu.data.remote.converter.toJobType
 import id.kitabantu.model.DummyData
 import id.kitabantu.model.Job
@@ -82,13 +83,15 @@ import id.kitabantu.ui.JobsUiState
 import id.kitabantu.ui.JobsViewModel
 import id.kitabantu.ui.theme.GreyLight
 import id.kitabantu.ui.theme.blackWithTransparency
+import java.text.NumberFormat
+import java.util.Locale
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    navigateToDetail: (String) -> Unit,
+    navigateToDetail: (Long) -> Unit,
     viewModel: JobsViewModel = hiltViewModel()
 
 ) {
@@ -116,7 +119,6 @@ fun HomeScreen(
             }
 
             is JobsUiState.Success -> {
-
                 val jobs = uiState.jobs
                 if (isSearchVisible) {
                     CustomSearchView(
@@ -131,8 +133,7 @@ fun HomeScreen(
                     ) {
                         val selectedFilters = remember { mutableStateOf<String?>(null) }
                         val selectedSort = remember { mutableStateOf("New Added") }
-                        val categoryList =
-                            listOf("Full Time", "Contract", "Part Time", "Internship")
+                        val categoryList = listOf("Full Time", "Contract", "Part Time", "Internship")
                         val sortList = listOf("New Added", "Salary")
 
                         if (!isSearchVisible) {
@@ -268,7 +269,7 @@ fun HomeScreen(
                                                             onClick = {
                                                                 if (selectedSort.value != sort) {
                                                                     selectedSort.value = sort
-                                                                    viewModel.setSort(sort)
+                                                                    viewModel.setSort(sort.toJobSort())
 
                                                                 }
                                                             },
@@ -317,6 +318,8 @@ fun HomeScreen(
 
             is JobsUiState.Error -> {
                 val errorMessage = uiState.message
+                Log.e("JobsUiState.Error", errorMessage)
+                homeDialog.value = true
                 if (homeDialog.value) {
                     BasicAlertDialog(
                         onDismissRequest = { }
@@ -370,7 +373,7 @@ fun HomeScreen(
 private fun HomeList(
     jobs: List<Job>,
     modifier: Modifier = Modifier,
-    navigateToDetail: (String) -> Unit,
+    navigateToDetail: (Long) -> Unit,
 ) {
     LazyColumn(
         modifier = modifier.background(GreyLight),
@@ -389,7 +392,7 @@ private fun HomeList(
 @Composable
 private fun HomeItem(
     job: Job,
-    navigateToDetail: (String) -> Unit,
+    navigateToDetail: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -398,7 +401,8 @@ private fun HomeItem(
             .clip(RoundedCornerShape(14.dp))
             .background(Color.White)
             .clickable {
-                navigateToDetail(job.title)
+                Log.e("job.id", job.id.toString())
+                navigateToDetail(job.id)
             }
 
     ) {
@@ -471,8 +475,10 @@ private fun HomeItem(
                         .align(Alignment.End),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                    val numberFormat = NumberFormat.getInstance(Locale("id", "ID"))
+                    val jobSalary = numberFormat.format(job.salary)
                     Text(
-                        text = "${job.salaryCurrency} ${job.salary} /month",
+                        text = "${job.salaryCurrency} $jobSalary /month",
                         style = MaterialTheme.typography.bodyMedium,
                         color = Color.DarkGray,
                         modifier = Modifier

@@ -84,15 +84,17 @@ import id.kitabantu.ui.JobsUiState
 import id.kitabantu.ui.JobsViewModel
 import id.kitabantu.ui.theme.GreyLight
 import id.kitabantu.ui.theme.blackWithTransparency
+import java.text.NumberFormat
+import java.util.Locale
 import kotlin.text.Typography.bullet
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
-    title: String,
+    id: Long,
     navigateToHome: () -> Unit,
-    navigateToDetail: (String) -> Unit,
+    navigateToDetail: (Long) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: JobsViewModel = hiltViewModel(),
 
@@ -115,8 +117,9 @@ fun DetailScreen(
 
             is JobsUiState.Success -> {
                 val jobs = uiState.jobs
+                Log.e("id", id.toString())
                 val job = uiState.jobs.find {
-                    it.title == title
+                    it.id == id
                 }
                 Column(
                     modifier
@@ -304,7 +307,7 @@ fun DetailScreen(
                         DetailContent(
                             job = job,
                             jobs = jobs,
-                            title = title,
+                            id = id,
                             navigateToDetail
                         )
                     }
@@ -315,6 +318,8 @@ fun DetailScreen(
 
             is JobsUiState.Error -> {
                 val errorMessage = uiState.message
+                Log.e("JobsUiState.Error", errorMessage)
+                detailDialog.value = true
                 if (detailDialog.value) {
                     BasicAlertDialog(
                         onDismissRequest = { }
@@ -368,8 +373,8 @@ fun DetailScreen(
 private fun DetailContent(
     job: Job,
     jobs: List<Job>,
-    title: String,
-    navigateToDetail: (String) -> Unit,
+    id: Long,
+    navigateToDetail: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -454,8 +459,10 @@ private fun DetailContent(
                             modifier = Modifier
                         )
                     }
+                    val numberFormat = NumberFormat.getInstance(Locale("id", "ID"))
+                    val jobSalary = numberFormat.format(job.salary)
                     Text(
-                        text = "${job.salaryCurrency} ${job.salary} /month",
+                        text = "${job.salaryCurrency} $jobSalary /month",
                         style = MaterialTheme.typography.bodySmall,
                         maxLines = 1,
                         color = Color.Black,
@@ -595,10 +602,10 @@ private fun DetailContent(
 
             DetailList(
                 jobs = jobs.filter {
-                    it.title != title
+                    it.id != id
                 },
                 navigateToDetail = navigateToDetail,
-                modifier = modifier.height(706.dp)
+                modifier = modifier.height(1060.dp)
             )
         }
     }
@@ -608,7 +615,7 @@ private fun DetailContent(
 private fun DetailList(
     jobs: List<Job>,
     modifier: Modifier = Modifier,
-    navigateToDetail: (String) -> Unit,
+    navigateToDetail: (Long) -> Unit,
 ) {
     LazyColumn(
         modifier = modifier.background(GreyLight),
@@ -627,7 +634,7 @@ private fun DetailList(
 @Composable
 private fun DetailItem(
     job: Job,
-    navigateToDetail: (String) -> Unit,
+    navigateToDetail: (Long) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -636,7 +643,7 @@ private fun DetailItem(
             .clip(RoundedCornerShape(14.dp))
             .background(Color.White)
             .clickable {
-                navigateToDetail(job.title)
+                navigateToDetail(job.id)
             }
 
     ) {
