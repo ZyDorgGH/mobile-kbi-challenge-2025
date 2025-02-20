@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "title": "Lead Engineer",
     "published": "2025-02-13T00:00:00",
     "company": "Tech Star Company",
@@ -16,6 +17,7 @@
     "salaryCurrency": "USD"
   },
   {
+    "id": 2,
     "title": "Full-Stack Engineer",
     "published": "2025-02-11T00:00:00",
     "company": "Tolt",
@@ -32,6 +34,7 @@
     "salaryCurrency": "USD"
   },
   {
+    "id": 3,
     "title": "Senior Test Automation Engineer",
     "published": "2025-02-06T00:00:00",
     "company": "MailerLite",
@@ -48,6 +51,7 @@
     "salaryCurrency": "USD"
   },
   {
+    "id": 4,
     "title": "Tech Lead",
     "published": "2025-01-31T00:00:00",
     "company": "Zappyrent",
@@ -64,6 +68,7 @@
     "salaryCurrency": "EUR"
   },
   {
+    "id": 5,
     "title": "Full Stack Ruby Engineer",
     "published": "2025-01-31T00:00:00",
     "company": "OpenPlay",
@@ -77,6 +82,349 @@
       "Collaborate with product teams to define features."
     ],
     "salary": 90000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 6,
+    "title": "Senior Software Engineer",
+    "published": "2025-02-20T00:00:00",
+    "company": "Pabst",
+    "companyLogoUrl": "https://absolutebeer.com/wp-content/uploads/2020/01/AB-Companies-Pabst-Brewing-Company-Logo-1.jpg",
+    "location": "Texas, United States",
+    "type": "full_time",
+    "excerpt": "Seeking a Senior Software Engineer to join our Application Development Team.",
+    "description": [
+      "Understand and translate business requirements into technical solutions.",
+      "Develop, test, and deploy software applications.",
+      "Collaborate with cross-functional teams to ensure project success."
+    ],
+    "salary": 115000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 7,
+    "title": "Software Engineer I/II",
+    "published": "2025-02-20T00:00:00",
+    "company": "Stanislaus County",
+    "companyLogoUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Seal_of_Stanislaus_County%2C_California.png",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Hiring Software Engineer I/II to work on various county projects.",
+    "description": [
+      "Develop and maintain software systems for county departments.",
+      "Ensure software aligns with organizational goals.",
+      "Provide technical support and troubleshooting."
+    ],
+    "salary": 115710.40,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 8,
+    "title": "Senior Software Engineer - OPC",
+    "published": "2025-02-20T00:00:00",
+    "company": "ASML",
+    "companyLogoUrl": "https://dwglogo.com/wp-content/uploads/2017/07/ASML_Holding_logo.png",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Looking for a Senior Software Engineer specializing in Optical Proximity Correction.",
+    "description": [
+      "Design and develop software for OPC applications.",
+      "Collaborate with engineering teams to enhance software performance.",
+      "Participate in code reviews and maintain coding standards."
+    ],
+    "salary": 240750,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 9,
+    "title": "Windchill Software Engineer",
+    "published": "2025-02-20T00:00:00",
+    "company": "Pantex",
+    "companyLogoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi0_gtauwiv_T2oHVWS4U_U7Hp25ZVbgnpQA&s",
+    "location": "Texas, United States",
+    "type": "full_time",
+    "excerpt": "Seeking a Windchill Software Engineer to manage PLM systems.",
+    "description": [
+      "Develop and maintain Windchill PLM applications.",
+      "Integrate Windchill with other enterprise systems.",
+      "Provide user support and training for Windchill applications."
+    ],
+    "salary": 130000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 10,
+    "title": "Software Engineer",
+    "published": "2025-02-20T00:00:00",
+    "company": "Source Unlimited",
+    "companyLogoUrl": "https://images.squarespace-cdn.com/content/v1/5d4333c20ec82400012ba028/1572537829510-YZZVIWJQA1568GYIBP74/Screen+Shot+2019-10-31+at+10.36.22+AM.png",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Hiring a Software Engineer to develop innovative applications.",
+    "description": [
+      "Design, develop, and deploy software solutions.",
+      "Collaborate with product teams to define feature requirements.",
+      "Maintain code quality and ensure responsiveness of applications."
+    ],
+    "salary": 160000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 11,
+    "title": "Software Engineer",
+    "published": "2025-02-20T00:00:00",
+    "company": "Apple",
+    "companyLogoUrl": "https://w7.pngwing.com/pngs/566/77/png-transparent-apple-logo-apple-watch-logo-apple-logo-heart-logo-computer-wallpaper-thumbnail.png",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Join Apple as a Software Engineer to work on cutting-edge technologies.",
+    "description": [
+      "Develop and maintain software for Apple products.",
+      "Collaborate with cross-functional teams to deliver high-quality software.",
+      "Participate in the full software development lifecycle."
+    ],
+    "salary": 264200,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 12,
+    "title": "Software Engineer, Mail Experience",
+    "published": "2025-02-20T00:00:00",
+    "company": "Apple",
+    "companyLogoUrl": "https://w7.pngwing.com/pngs/566/77/png-transparent-apple-logo-apple-watch-logo-apple-logo-heart-logo-computer-wallpaper-thumbnail.png",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Seeking a Software Engineer to enhance the Mail experience on Apple devices.",
+    "description": [
+      "Develop new features for the Mail application.",
+      "Optimize performance and user experience.",
+      "Work closely with design and product teams."
+    ],
+    "salary": 165000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 13,
+    "title": "Backend Software Engineer",
+    "published": "2025-02-20T00:00:00",
+    "company": "Source Unlimited",
+    "companyLogoUrl": "https://images.squarespace-cdn.com/content/v1/5d4333c20ec82400012ba028/1572537829510-YZZVIWJQA1568GYIBP74/Screen+Shot+2019-10-31+at+10.36.22+AM.png",
+    "location": "Remote",
+    "type": "contract",
+    "excerpt": "Remote position for a Backend Software Engineer specializing in server-side development.",
+    "description": [
+      "Develop and maintain backend services and APIs.",
+      "Ensure scalability and performance of server-side applications.",
+      "Collaborate with frontend developers to integrate user-facing elements."
+    ],
+    "salary": 120000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 14,
+    "title": "Software Engineer & Computer Science - Recent Grad/Full Time",
+    "published": "2025-02-20T00:00:00",
+    "company": "Honeywell",
+    "companyLogoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHuf4S_umEAPjnt6LO5VNh5CUgEqpqcz7W-Q&s",
+    "location": "United States",
+    "type": "full_time",
+    "excerpt": "Entry-level position for recent graduates in Computer Science.",
+    "description": [
+      "Develop software solutions for various Honeywell products.",
+      "Participate in code reviews and testing.",
+      "Collaborate with engineering teams to deliver high-quality software."
+    ],
+    "salary": 115000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 15,
+    "title": "Junior Software Engineer",
+    "published": "2025-02-20T00:00:00",
+    "company": "COMET Technologies USA, Inc.",
+    "companyLogoUrl": "https://reports.comet-group.com/19/app/themes/comet-child/images/comet_group_logo_RGB.png",
+    "location": "San Jose, CA, United States",
+    "type": "full_time",
+    "excerpt": "Seeking a Junior Software Engineer to develop and maintain software applications, ensuring high performance and responsiveness.",
+    "description": [
+      "Write and maintain code modules.",
+      "Document the codebase and implement unit/integration tests.",
+      "Collaborate with senior developers to design software solutions.",
+      "Participate in code reviews and contribute to team meetings.",
+      "Troubleshoot and debug applications to optimize performance."
+    ],
+    "salary": 85000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 16,
+    "title": "Lead Software Engineer, Full Stack",
+    "published": "2025-02-19T00:00:00",
+    "company": "Capital One",
+    "companyLogoUrl": "https://w7.pngwing.com/pngs/92/934/png-transparent-capital-one-hd-logo.png",
+    "location": "Virginia, United States",
+    "type": "full_time",
+    "excerpt": "Seeking a Lead Software Engineer to collaborate with digital product managers and deliver robust cloud-based solutions.",
+    "description": [
+      "Design and develop full-stack applications.",
+      "Collaborate with cross-functional teams to deliver high-quality software solutions.",
+      "Mentor junior engineers and promote best practices."
+    ],
+    "salary": 190000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 17,
+    "title": "AI Software Engineer",
+    "published": "2025-02-15T00:00:00",
+    "company": "platFlow.ai",
+    "companyLogoUrl": "https://plat.ai/wp-content/uploads/meta-logo-and-tagline.png",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Urgently hiring an AI Software Engineer to develop and deploy AI models for cloud platforms.",
+    "description": [
+      "Design and implement AI models for cloud-based applications.",
+      "Collaborate with cross-functional teams to integrate AI solutions.",
+      "Optimize AI algorithms for performance and scalability."
+    ],
+    "salary": 270000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 18,
+    "title": "Software Engineer",
+    "published": "2025-02-14T00:00:00",
+    "company": "KLA",
+    "companyLogoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVXJBW1DycXjCJsSZTEvU0u4aPam9BaoI07w&s",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Seeking a Software Engineer to develop advanced inspection and metrology software solutions.",
+    "description": [
+      "Develop software for semiconductor inspection systems.",
+      "Collaborate with hardware engineers to integrate software solutions.",
+      "Participate in code reviews and maintain coding standards."
+    ],
+    "salary": 147000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 19,
+    "title": "Software Developer Associate",
+    "published": "2025-02-13T00:00:00",
+    "company": "General Dynamics Information Technology",
+    "companyLogoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG0ZDGY4AUJ0J5uv_gSbs5pDTQVV9osBN-FQ&s",
+    "location": "Maryland, United States",
+    "type": "full_time",
+    "excerpt": "Hiring a Software Developer Associate to assist in designing and developing software systems.",
+    "description": [
+      "Analyze user needs to design software solutions.",
+      "Develop and test software applications.",
+      "Collaborate with senior developers to implement new features."
+    ],
+    "salary": 90000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 20,
+    "title": "Software Engineer (Java)",
+    "published": "2025-02-12T00:00:00",
+    "company": "Komprise, Inc.",
+    "companyLogoUrl": "https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/m3gfi2pumrxy0lehxa68",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Looking for a Software Engineer with strong Java development skills.",
+    "description": [
+      "Develop and maintain Java-based applications.",
+      "Collaborate with cross-functional teams to define and implement new features.",
+      "Ensure application performance and scalability."
+    ],
+    "salary": 145000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 21,
+    "title": "Software Engineer",
+    "published": "2025-02-11T00:00:00",
+    "company": "JPMorgan Chase",
+    "companyLogoUrl": "https://e7.pngegg.com/pngimages/336/26/png-clipart-jpmorgan-chase-brand-chase-bank-logo-font-liv-morgan-text-rectangle.png",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Seeking a Software Engineer to develop and support financial applications.",
+    "description": [
+      "Design and develop software solutions for financial services.",
+      "Collaborate with business analysts to understand requirements.",
+      "Maintain and enhance existing software applications."
+    ],
+    "salary": 175500,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 22,
+    "title": "Software Development Engineer 3",
+    "published": "2025-02-10T00:00:00",
+    "company": "Ericsson",
+    "companyLogoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBBqQp5JIH1vN4G_h0lBrf0m3aStHHodKRiw&s",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Hiring a Software Development Engineer to build scalable, cloud-native infrastructure.",
+    "description": [
+      "Design and develop cloud-native software solutions.",
+      "Collaborate with cross-functional teams to deliver high-quality products.",
+      "Implement automation for software deployment pipelines."
+    ],
+    "salary": 208000,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 23,
+    "title": "Software Engineer",
+    "published": "2025-02-09T00:00:00",
+    "company": "PayPal",
+    "companyLogoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
+    "location": "California, United States",
+    "type": "full_time",
+    "excerpt": "Seeking a Software Engineer to develop and maintain payment processing systems.",
+    "description": [
+      "Design and implement software for payment processing.",
+      "Collaborate with product teams to define system requirements.",
+      "Ensure security and compliance of financial transactions."
+    ],
+    "salary": 140150,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 24,
+    "title": "Senior Software Engineer - Security Clearance Required",
+    "published": "2025-02-08T00:00:00",
+    "company": "SET Development",
+    "companyLogoUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwARc_XhIAleLGWy89Sx3IB0toQbjHVvzMeA&s",
+    "location": "Colorado, United States",
+    "type": "contract",
+    "excerpt": "Seeking a Senior Software Engineer with security clearance to join our Satellite Systems team.",
+    "description": [
+      "Develop software for satellite communication systems.",
+      "Ensure compliance with security protocols and standards.",
+      "Collaborate with hardware engineers to integrate software solutions."
+    ],
+    "salary": 187500,
+    "salaryCurrency": "USD"
+  },
+  {
+    "id": 25,
+    "title": "Software Development Engineer Intern - 2025",
+    "published": "2025-02-10T00:00:00",
+    "company": "Amazon",
+    "companyLogoUrl": "https://i.pinimg.com/originals/01/ca/da/01cada77a0a7d326d85b7969fe26a728.jpg",
+    "location": "United States",
+    "type": "internship",
+    "excerpt": "Amazon is seeking Software Development Engineer (SDE) Interns to join various teams across the U.S. for the 2025 internship program.",
+    "description": [
+      "Collaborate with experienced SDEs to design and develop software solutions.",
+      "Participate in the full software development lifecycle, including coding, testing, and deployment.",
+      "Contribute to team discussions and code reviews.",
+      "Work on real-world projects that impact Amazon customers globally."
+    ],
+    "salary": 70000,
     "salaryCurrency": "USD"
   }
 ]
