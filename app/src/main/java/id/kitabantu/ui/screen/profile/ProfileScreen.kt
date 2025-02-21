@@ -71,9 +71,7 @@ fun ProfileScreen(
                     .clip(CircleShape)
                     .background(Color.Gray)
             )
-
-            Spacer(modifier = Modifier.height(10.dp))
-
+        Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = user?.displayName ?: "Name",
                 style = MaterialTheme.typography.headlineSmall,

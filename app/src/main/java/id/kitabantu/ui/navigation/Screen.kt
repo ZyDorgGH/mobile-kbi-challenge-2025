@@ -11,4 +11,8 @@ sealed class Screen(val route: String) {
     }
     object Profile : Screen("profile")
     object Bookmark : Screen("bookmark")
+
+    object Login : Screen("login")
+
+    object Register : Screen("register")
 }
