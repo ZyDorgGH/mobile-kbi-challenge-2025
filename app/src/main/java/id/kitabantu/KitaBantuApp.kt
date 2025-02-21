@@ -27,12 +27,12 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -77,7 +77,6 @@ fun KitaBantuApp(
                                 text = stringResource(R.string.bookmark_menu),
                                 style = MaterialTheme.typography.titleLarge,
                                 color = Color.Black,
-                                fontWeight = FontWeight.Bold,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis,
                                 modifier = Modifier
@@ -106,6 +105,9 @@ fun KitaBantuApp(
                         },
                         actions = {
                         },
+                        colors = TopAppBarDefaults.topAppBarColors(
+                            containerColor = MaterialTheme.colorScheme.background
+                        )
                     )
                 }
                 Screen.Profile.route ->{
@@ -115,7 +117,6 @@ fun KitaBantuApp(
                                 text = stringResource(id = R.string.menu_profile),
                                 style = MaterialTheme.typography.titleLarge,
                                 color = Color.Black,
-                                fontWeight = FontWeight.Bold,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis,
                                 modifier = Modifier
@@ -131,6 +132,9 @@ fun KitaBantuApp(
                         },
                         actions = {
                         },
+                        colors = TopAppBarDefaults.topAppBarColors(
+                            containerColor = MaterialTheme.colorScheme.background
+                        )
                     )
                 }
             }
