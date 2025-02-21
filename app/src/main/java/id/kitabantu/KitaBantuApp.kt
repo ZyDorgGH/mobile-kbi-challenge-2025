@@ -49,7 +49,9 @@ import id.kitabantu.ui.screen.bookmark.BookmarkScreen
 import id.kitabantu.ui.screen.chat.ChatScreen
 import id.kitabantu.ui.screen.detail.DetailScreen
 import id.kitabantu.ui.screen.home.HomeScreen
+import id.kitabantu.ui.screen.login.LoginScreen
 import id.kitabantu.ui.screen.profile.ProfileScreen
+import id.kitabantu.ui.screen.register.RegisterScreen
 import id.kitabantu.ui.theme.BluePylon
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -105,6 +107,31 @@ fun KitaBantuApp(
                         },
                     )
                 }
+                Screen.Profile.route ->{
+                    TopAppBar(
+                        title = {
+                            Text(
+                                text = stringResource(id = R.string.menu_profile),
+                                style = MaterialTheme.typography.titleLarge,
+                                color = Color.Black,
+                                fontWeight = FontWeight.Bold,
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier
+                                    .width(230.dp)
+                                    .padding(
+                                        start = 8.dp,
+                                        bottom = 2.dp,
+                                        top = 4.dp
+                                    )
+                            )
+                        },
+                        navigationIcon = {
+                        },
+                        actions = {
+                        },
+                    )
+                }
             }
 
         },
@@ -125,7 +152,7 @@ fun KitaBantuApp(
         NavHost(
             modifier = Modifier.padding(innerPadding),
             navController = navController,
-            startDestination = Screen.Home.route,
+            startDestination = Screen.Login.route,
             enterTransition = {
                 slideInHorizontally(initialOffsetX = { 1000 }) + fadeIn()
             },
@@ -140,6 +167,22 @@ fun KitaBantuApp(
             },
 
         ){
+            composable(Screen.Login.route) {
+                LoginScreen(
+                    navigateToHome = {
+                       navController.navigate(Screen.Home.route)
+                    },
+                    navigateToRegister = {
+                        navController.navigate(Screen.Register.route)
+                    }
+                )
+            }
+            composable(Screen.Register.route) {
+                RegisterScreen(
+                    navigateToLogin = {
+                    navController.navigate(Screen.Login.route)
+                })
+            }
             composable(Screen.Home.route) {
                 HomeScreen(
                     navigateToDetail = {id ->
