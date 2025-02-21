@@ -726,6 +726,7 @@ private fun DetailItem(
                         text = job.type.toDisplayString(),
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
+                        color = Color.Black,
                         modifier = modifier.padding(start = 8.dp, end = 8.dp, top = 0.dp)
                     )
                 }

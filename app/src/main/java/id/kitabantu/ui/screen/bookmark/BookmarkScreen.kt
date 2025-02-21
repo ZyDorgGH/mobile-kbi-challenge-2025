@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -41,6 +42,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import id.kitabantu.R
 import id.kitabantu.data.remote.converter.toDisplayString
 import id.kitabantu.model.Job
 import id.kitabantu.ui.theme.GreyLight
@@ -78,7 +80,7 @@ fun BookmarkScreen(
                         )
                     } else {
                         EmptyOrErrorScreen(
-                            state = ScreenState.Empty,
+                            state = ScreenState.EMPTY,
                             onRetry = {}
                         )
                     }
@@ -86,7 +88,7 @@ fun BookmarkScreen(
             }
             is BookmarkUiState.Error -> {
                 EmptyOrErrorScreen(
-                    state = ScreenState.Error,
+                    state = ScreenState.ERROR,
                     onRetry = {}
                 )
 
@@ -215,7 +217,7 @@ private fun BookmarkItem(
 }
 
 enum class ScreenState {
-    Empty, Error
+    EMPTY, ERROR
 }
 
 @Composable
@@ -224,15 +226,15 @@ fun EmptyOrErrorScreen(
     onRetry: () -> Unit
 ) {
     val (icon, title, description) = when (state) {
-        ScreenState.Empty -> Triple(
+        ScreenState.EMPTY -> Triple(
             Icons.Default.Inbox,
-            "Bookmark Kosong",
-            "Anda belum menambahkan bookmark apa pun."
+            "No Bookmarks Yet",
+            "You haven't added any bookmarks yet."
         )
-        ScreenState.Error -> Triple(
+        ScreenState.ERROR -> Triple(
             Icons.Default.SignalWifiConnectedNoInternet4,
-            "Gagal Memuat Data",
-            "Terjadi kesalahan saat memuat data. Silakan coba lagi."
+            "Failed to Load Data",
+            "An error occurred while loading data. Please try again."
         )
     }
 
@@ -243,7 +245,6 @@ fun EmptyOrErrorScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // Background lingkaran untuk ikon
         Box(
             modifier = Modifier
                 .size(160.dp)
@@ -273,10 +274,10 @@ fun EmptyOrErrorScreen(
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
         )
-        if (state == ScreenState.Error) {
+        if (state == ScreenState.ERROR) {
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = onRetry) {
-                Text(text = "Coba Lagi")
+                Text(text = stringResource(R.string.try_again))
             }
         }
     }

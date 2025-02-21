@@ -2,6 +2,7 @@ package id.kitabantu.ui.screen.chat
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,12 +20,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Chat
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.SignalWifiConnectedNoInternet4
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -38,6 +40,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -112,15 +115,22 @@ fun ChatPage(
                 modifier = modifier
                     .fillMaxSize()
             ) {
-                LazyColumn {
-                    val chats = uiState.jobChats
-                    items(chats) { chat ->
-                        JobChatItem(
-                            chat = chat,
-                            navigateToChat = navigateToChat,
-                        )
-                        HorizontalDivider()
+                if (uiState.jobChats.isNotEmpty()) {
+                    LazyColumn {
+                        val chats = uiState.jobChats
+                        items(chats) { chat ->
+                            JobChatItem(
+                                chat = chat,
+                                navigateToChat = navigateToChat,
+                            )
+                            HorizontalDivider()
+                        }
                     }
+                } else {
+                    EmptyOrErrorChatScreen(
+                        state = ChatScreenState.EMPTY,
+                        onRetry = {}
+                    )
                 }
             }
         }
@@ -176,6 +186,73 @@ private fun JobChatItem(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
+        }
+    }
+}
+
+enum class ChatScreenState {
+    EMPTY, ERROR
+}
+
+@Composable
+fun EmptyOrErrorChatScreen(
+    state: ChatScreenState,
+    onRetry: () -> Unit
+) {
+    val (icon, title, description) = when (state) {
+        ChatScreenState.EMPTY -> Triple(
+            Icons.Default.Chat,
+            "No Chat Yet",
+            "You haven't added any bookmarks yet."
+        )
+        ChatScreenState.ERROR -> Triple(
+            Icons.Default.SignalWifiConnectedNoInternet4,
+            "Failed to Load Data",
+            "An error occurred while loading data. Please try again."
+        )
+    }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Box(
+            modifier = Modifier
+                .size(160.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.1f)),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                modifier = Modifier.size(80.dp),
+                tint = MaterialTheme.colorScheme.primary
+            )
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            text = title,
+            style = MaterialTheme.typography.headlineSmall,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.primary
+
+        )
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = description,
+            style = MaterialTheme.typography.bodyMedium,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
+        )
+        if (state == ChatScreenState.ERROR) {
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(onClick = onRetry) {
+                Text(text = stringResource(R.string.try_again))
+            }
         }
     }
 }
