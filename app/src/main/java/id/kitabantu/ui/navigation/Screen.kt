@@ -5,7 +5,10 @@ sealed class Screen(val route: String) {
     object DetailJob : Screen("home/{id}") {
         fun createRoute(id: Long) = "home/$id"
     }
-    object Chat : Screen("chat")
+    object JobChat : Screen("chat")
+    object Chat : Screen("chat/{id}"){
+        fun createRoute(id: Long) = "chat/$id"
+    }
     object Profile : Screen("profile")
     object Bookmark : Screen("bookmark")
 }

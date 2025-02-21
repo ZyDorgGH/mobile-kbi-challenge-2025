@@ -38,6 +38,7 @@ import androidx.compose.material.icons.outlined.WatchLater
 import androidx.compose.material.icons.outlined.WorkOutline
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -95,12 +96,13 @@ fun DetailScreen(
     id: Long,
     navigateToHome: () -> Unit,
     navigateToDetail: (Long) -> Unit,
+    navigateToChat: (Long) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: JobsViewModel = hiltViewModel(),
+) {
 
-    ) {
-
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val scrollBehavior =
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     val detailDialog = remember { mutableStateOf(false) }
     val context = LocalContext.current
 
@@ -172,7 +174,7 @@ fun DetailScreen(
                                         Column(
                                             modifier = modifier,
                                         ) {
-                                            if (scrollBehavior.state.collapsedFraction >= 0.5){
+                                            if (scrollBehavior.state.collapsedFraction >= 0.5) {
                                                 Text(
                                                     text = job.title,
                                                     style = MaterialTheme.typography.titleMedium,
@@ -218,7 +220,10 @@ fun DetailScreen(
                                                     style = MaterialTheme.typography.bodySmall,
                                                     color = Color.Black,
                                                     maxLines = 2,
-                                                    modifier = Modifier.padding(start = 8.dp, end = 16.dp)
+                                                    modifier = Modifier.padding(
+                                                        start = 8.dp,
+                                                        end = 16.dp
+                                                    )
                                                 )
                                             }
                                         }
@@ -251,10 +256,16 @@ fun DetailScreen(
                                 }
                             },
                             actions = {
-                                var isBookmarked by remember { mutableStateOf(viewModel.isBookmark(job)) }
+                                var isBookmarked by remember {
+                                    mutableStateOf(
+                                        viewModel.isBookmark(
+                                            job
+                                        )
+                                    )
+                                }
                                 IconButton(
                                     onClick = {
-                                        if (isBookmarked){
+                                        if (isBookmarked) {
                                             viewModel.removeBookmark(job)
                                         } else {
                                             viewModel.addBookmark(job)
@@ -308,7 +319,11 @@ fun DetailScreen(
                             job = job,
                             jobs = jobs,
                             id = id,
-                            navigateToDetail
+                            navigateToDetail= navigateToDetail,
+                            applyAndNavigateToChat = {
+                                viewModel.sendMessage(job)
+                                navigateToChat(job.id)
+                            }
                         )
                     }
 
@@ -375,6 +390,7 @@ private fun DetailContent(
     jobs: List<Job>,
     id: Long,
     navigateToDetail: (Long) -> Unit,
+    applyAndNavigateToChat: (Job) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -397,7 +413,7 @@ private fun DetailContent(
                     modifier
                         .weight(1f)
                 ) {
-                    Row (
+                    Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = modifier.padding(
                             start = 24.dp,
@@ -405,7 +421,7 @@ private fun DetailContent(
                             top = 16.dp,
                             bottom = 2.dp
                         )
-                    ){
+                    ) {
                         Icon(
                             imageVector = Icons.Outlined.WatchLater,
                             contentDescription = "time",
@@ -570,7 +586,7 @@ private fun DetailContent(
                     color = Color.Black,
                     maxLines = if (!expanded) 3 else Int.MAX_VALUE,
                     textAlign = TextAlign.Justify,
-                    modifier = Modifier.padding(start = 28.dp, end = 32.dp, bottom = 16.dp)
+                    modifier = Modifier.padding(start = 28.dp, end = 32.dp, bottom = 4.dp)
                 )
 
                 if (job.description.size >= 4)
@@ -581,9 +597,26 @@ private fun DetailContent(
                         horizontalArrangement = Arrangement.Start
                     ) {
                         TextButton(onClick = { expanded = !expanded }) {
-                            Text(text = if (expanded) "Show less" else "Show more")
+                            Text(
+                                text = if (expanded) "Show less" else "Show more",
+                                style = MaterialTheme.typography.bodySmall,
+                            )
                         }
                     }
+
+                Button(
+                    onClick = {
+                        applyAndNavigateToChat(job)
+                    },
+                    modifier = modifier
+                        .padding(horizontal = 16.dp, vertical = 24.dp)
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        text = "Chat to apply",
+                        style = MaterialTheme.typography.titleSmall,
+                    )
+                }
             }
 
         }
