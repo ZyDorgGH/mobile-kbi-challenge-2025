@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.kitabantu.data.Result
 import id.kitabantu.data.repository.JobBookmarkRepository
+import id.kitabantu.data.repository.JobChatRepository
 import id.kitabantu.data.repository.JobRepository
 import id.kitabantu.model.Job
 import id.kitabantu.model.JobSort
@@ -21,7 +22,8 @@ import javax.inject.Inject
 @HiltViewModel
 class JobsViewModel @Inject constructor(
     jobRepository: JobRepository,
-    private val jobBookmarkRepository: JobBookmarkRepository
+    private val jobBookmarkRepository: JobBookmarkRepository,
+    private val jobChatRepository: JobChatRepository,
 ) : ViewModel() {
 
     private val _jobsQuery: MutableStateFlow<String> = MutableStateFlow("")
@@ -76,6 +78,10 @@ class JobsViewModel @Inject constructor(
 
     fun isBookmark(job: Job): Boolean{
         return jobBookmarkRepository.isBookmarked(job)
+    }
+
+    fun sendMessage(job: Job)  {
+        jobChatRepository.addMessage(job, "Hello, I'm interested in this position")
     }
 
     private fun List<Job>.search(

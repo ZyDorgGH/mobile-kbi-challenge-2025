@@ -47,6 +47,7 @@ import id.kitabantu.ui.navigation.NavigationItem
 import id.kitabantu.ui.navigation.Screen
 import id.kitabantu.ui.screen.bookmark.BookmarkScreen
 import id.kitabantu.ui.screen.chat.ChatScreen
+import id.kitabantu.ui.screen.chat.JobChatScreen
 import id.kitabantu.ui.screen.detail.DetailScreen
 import id.kitabantu.ui.screen.home.HomeScreen
 import id.kitabantu.ui.screen.profile.ProfileScreen
@@ -59,14 +60,14 @@ fun KitaBantuApp(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
 
-){
+    ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    Scaffold (
+    Scaffold(
         modifier = modifier,
         topBar = {
-            when(currentRoute){
+            when (currentRoute) {
                 Screen.Bookmark.route -> {
                     TopAppBar(
                         title = {
@@ -111,17 +112,17 @@ fun KitaBantuApp(
         bottomBar = {
             if (currentRoute in listOf(
                     Screen.Home.route,
-                    Screen.Chat.route,
+                    Screen.JobChat.route,
                     Screen.Profile.route
                 )
             ) BottomBar(navController = navController, currentRoute = currentRoute)
         },
         floatingActionButton = {
-          //detail screen
+            //detail screen
         },
         floatingActionButtonPosition = FabPosition.Center,
 
-    ) {innerPadding ->
+        ) { innerPadding ->
         NavHost(
             modifier = Modifier.padding(innerPadding),
             navController = navController,
@@ -139,10 +140,10 @@ fun KitaBantuApp(
                 slideOutHorizontally(targetOffsetX = { 1000 }) + fadeOut()
             },
 
-        ){
+            ) {
             composable(Screen.Home.route) {
                 HomeScreen(
-                    navigateToDetail = {id ->
+                    navigateToDetail = { id ->
                         navController.navigate(Screen.DetailJob.createRoute(id))
                     }
                 )
@@ -155,12 +156,25 @@ fun KitaBantuApp(
                 DetailScreen(
                     id = jobId,
                     navigateToHome = { navController.navigate(Screen.Home.route) },
-                    navigateToDetail = {id ->
+                    navigateToDetail = { id ->
                         navController.navigate(Screen.DetailJob.createRoute(id))
+                    },
+                    navigateToChat = { id ->
+                        navController.navigate(Screen.Chat.createRoute(id))
                     }
                 )
             }
-            composable(Screen.Chat.route) {
+            composable(Screen.JobChat.route) {
+                JobChatScreen(
+                    navigateToChat = { id ->
+                        navController.navigate(Screen.Chat.createRoute(id))
+                    }
+                )
+            }
+            composable(
+                route = Screen.Chat.route,
+                arguments = listOf(navArgument("id") { type = NavType.LongType })
+            ) {
                 ChatScreen()
             }
             composable(Screen.Profile.route) {
@@ -171,7 +185,7 @@ fun KitaBantuApp(
                 )
             }
             composable(Screen.Bookmark.route) {
-                BookmarkScreen(navigateToDetail = {id ->
+                BookmarkScreen(navigateToDetail = { id ->
                     navController.navigate(Screen.DetailJob.createRoute(id))
                 })
             }
@@ -202,7 +216,7 @@ private fun BottomBar(
                 title = stringResource(R.string.menu_chat),
                 selectedIcon = Icons.Default.Chat,
                 unselectedIcon = Icons.Outlined.Chat,
-                screen = Screen.Chat
+                screen = Screen.JobChat
             ),
             NavigationItem(
                 title = stringResource(R.string.menu_profile),
