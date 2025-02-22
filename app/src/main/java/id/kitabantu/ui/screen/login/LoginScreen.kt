@@ -30,7 +30,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -52,6 +54,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import id.kitabantu.R
 import id.kitabantu.ui.AuthenticationViewModel
 import id.kitabantu.ui.pattern.Pattern
@@ -64,13 +67,20 @@ fun LoginScreen(
     navigateToHome: () -> Unit,
     navigateToRegister: () -> Unit,
     viewModel: AuthenticationViewModel = hiltViewModel()
-){
+) {
     val email = rememberSaveable { mutableStateOf("") }
     val password = rememberSaveable { mutableStateOf("") }
-    val emailIsError = rememberSaveable{ mutableStateOf(true) }
+    val emailIsError = rememberSaveable { mutableStateOf(true) }
     val passwordIsError = rememberSaveable { mutableStateOf(true) }
     val loginDialog = remember { mutableStateOf(false) }
     val passwordVisible = rememberSaveable { mutableStateOf(false) }
+
+    val user by viewModel.user.collectAsStateWithLifecycle()
+    LaunchedEffect(user) {
+        if (user != null) {
+            navigateToHome()
+        }
+    }
 
     val onLoginClick = {
         loginDialog.value = true
@@ -94,14 +104,14 @@ fun LoginScreen(
 fun LoginContent(
     modifier: Modifier = Modifier,
     email: MutableState<String>,
-    password : MutableState<String>,
+    password: MutableState<String>,
     emailIsError: MutableState<Boolean>,
     passwordIsError: MutableState<Boolean>,
     passwordVisible: MutableState<Boolean>,
 
     onNotRegisteredClick: () -> Unit,
     onLoginClick: () -> Unit
-){
+) {
 
     val scrollState = rememberScrollState()
 
@@ -129,10 +139,11 @@ fun LoginContent(
             colors = outlinedTextFieldColors(),
             onValueChange = {
                 email.value = it
-                emailIsError.value = Pattern.emailPattern(it) },
+                emailIsError.value = Pattern.emailPattern(it)
+            },
             isError = !emailIsError.value,
             supportingText = {
-                if (!emailIsError.value){
+                if (!emailIsError.value) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringResource(R.string.email_error_massage),
@@ -155,11 +166,13 @@ fun LoginContent(
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password
             ),
-            onValueChange = { password.value = it
-                passwordIsError.value = Pattern.passwordPattern(it)},
+            onValueChange = {
+                password.value = it
+                passwordIsError.value = Pattern.passwordPattern(it)
+            },
             isError = !passwordIsError.value,
             supportingText = {
-                if (!emailIsError.value){
+                if (!emailIsError.value) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringResource(R.string.password_error_message),
@@ -174,8 +187,8 @@ fun LoginContent(
                     Icons.Filled.Visibility
                 else Icons.Filled.VisibilityOff
                 val description = if (passwordVisible.value) "Hide password" else "Show password"
-                IconButton(onClick = {passwordVisible.value = !passwordVisible.value}){
-                    Icon(imageVector  = image, description)
+                IconButton(onClick = { passwordVisible.value = !passwordVisible.value }) {
+                    Icon(imageVector = image, description)
                 }
             },
             modifier = modifier
@@ -213,7 +226,7 @@ fun LoginContent(
             }
         }
         Spacer(modifier = modifier.height(20.dp))
-        Box (contentAlignment = Alignment.BottomCenter){
+        Box(contentAlignment = Alignment.BottomCenter) {
             Row(
                 modifier
                     .padding(8.dp)
