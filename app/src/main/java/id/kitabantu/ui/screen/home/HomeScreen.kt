@@ -3,6 +3,7 @@ package id.kitabantu.ui.screen.home
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -65,6 +66,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -205,7 +207,24 @@ fun HomeScreen(
                                         actionIconContentColor = MaterialTheme.colorScheme.primary
                                     ),
                                     navigationIcon = {
+                                        Row(
+                                            modifier = modifier
+                                                .padding(start = 16.dp, top = 4.dp),
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Image(
+                                                painter = painterResource(id = R.drawable.kitabantu_logo),
+                                                contentDescription = "KitaBantu logo",
+                                                modifier.size(32.dp)
+                                            )
 
+                                            Image(
+                                                painter = painterResource(id = R.drawable.kitabantu_teks),
+                                                contentDescription = "KitaBantu design",
+                                                modifier
+                                                    .padding(start = 8.dp, top = 6.dp)
+                                            )
+                                        }
                                     },
                                     actions = {
                                         if (scrollBehavior.state.collapsedFraction < 0.5) {

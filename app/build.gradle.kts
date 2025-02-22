@@ -83,6 +83,8 @@ dependencies {
 
     implementation(libs.lifecycle.viewmodel.compose)
 
+    implementation ("androidx.core:core-splashscreen:1.0.1")
+
     implementation ("androidx.compose.ui:ui-text-google-fonts:1.7.8")
     implementation("androidx.compose.material:material-icons-extended:1.7.8")
 
