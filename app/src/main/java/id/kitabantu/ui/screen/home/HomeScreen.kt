@@ -207,23 +207,25 @@ fun HomeScreen(
                                         actionIconContentColor = MaterialTheme.colorScheme.primary
                                     ),
                                     navigationIcon = {
-                                        Row(
-                                            modifier = modifier
-                                                .padding(start = 16.dp, top = 4.dp),
-                                            verticalAlignment = Alignment.CenterVertically
-                                        ) {
-                                            Image(
-                                                painter = painterResource(id = R.drawable.kitabantu_logo),
-                                                contentDescription = "KitaBantu logo",
-                                                modifier.size(32.dp)
-                                            )
+                                        if (scrollBehavior.state.collapsedFraction < 0.5) {
+                                            Row(
+                                                modifier = modifier
+                                                    .padding(start = 16.dp, top = 4.dp),
+                                                verticalAlignment = Alignment.CenterVertically
+                                            ) {
+                                                Image(
+                                                    painter = painterResource(id = R.drawable.kitabantu_logo),
+                                                    contentDescription = "KitaBantu logo",
+                                                    modifier.size(32.dp)
+                                                )
 
-                                            Image(
-                                                painter = painterResource(id = R.drawable.kitabantu_teks),
-                                                contentDescription = "KitaBantu design",
-                                                modifier
-                                                    .padding(start = 8.dp, top = 6.dp)
-                                            )
+                                                Image(
+                                                    painter = painterResource(id = R.drawable.kitabantu_teks),
+                                                    contentDescription = "KitaBantu design",
+                                                    modifier
+                                                        .padding(start = 8.dp, top = 6.dp)
+                                                )
+                                            }
                                         }
                                     },
                                     actions = {
